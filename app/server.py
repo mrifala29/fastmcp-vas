@@ -1,7 +1,7 @@
 from fastmcp import FastMCP
 from .services import fetch_subscriptions, unsubscribe
 
-mcp = FastMCP("subscription-mcp")
+mcp = FastMCP("vas-mcp")
 
 
 @mcp.tool(
