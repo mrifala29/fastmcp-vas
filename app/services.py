@@ -10,7 +10,9 @@ def _resolve_country_operator(msisdn: str):
         parsed = phonenumbers.parse("+" + msisdn)
 
         country_code = phonenumbers.region_code_for_number(parsed)
+        # print(country_code)
         operator_name = carrier.name_for_number(parsed, "en").lower()
+        # print(operator_name)
 
         return country_code, operator_name
 
