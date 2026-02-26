@@ -10,23 +10,9 @@ def _resolve_country_operator(msisdn: str):
         parsed = phonenumbers.parse("+" + msisdn)
 
         country_code = phonenumbers.region_code_for_number(parsed)
-        print(country_code)
         operator_name = carrier.name_for_number(parsed, "en").lower()
-        print(operator_name)
 
-        operator_map = {
-            "omantel": "omantel",
-            "oman telecommunications": "omantel",
-            "lao telecom": "laotel",
-            "laotel": "laotel",
-        }
-
-        operator_internal = operator_map.get(operator_name)
-
-        if not operator_internal:
-            raise ValueError(f"Unsupported operator: {operator_name}")
-
-        return country_code, operator_internal
+        return country_code, operator_name
 
     except Exception:
         raise ValueError("Invalid or unsupported MSISDN")
